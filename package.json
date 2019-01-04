@@ -1,0 +1,17 @@
+{
+  "name": "jest-chapter-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest -u --colors --coverage --watch libraries/"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.11.1",
+    "eslint-config-google": "^0.11.0",
+    "jest": "^23.6.0"
+  },
+  "dependencies": {}
+}
