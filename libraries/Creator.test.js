@@ -11,22 +11,9 @@ beforeEach(() => {
 });
 
 test('test create random board', () => {
-    const MyCreator = new Creator();
-    const MyTable = MyCreator.createBoard();
-
-    expect(MyTable.validate()).toBeTruthy();
 })
 
 test('test create random board with mock', () => {
-    const MyCreator  = new Creator();
-    MyCreator.randBoardNumber = () => 0
-
-    const MyTable = MyCreator.createBoard();
-
-    expect(MyTable.validate()).toBeTruthy();
-
-    jest.spyOn(Creator.prototype, "randBoardNumber");
-    jest.restoreAllMocks();
 })
 
 test('test create random board with mock and spy', () => {
@@ -52,4 +39,18 @@ test('test create random board with out of scope board', () => {
 
     expect(spy).toHaveBeenCalled()
     expect(MyTable).toBeUndefined();
+})
+
+test('test create random board with multiple random', () => {
+    const MyCreator  = new Creator();
+
+    MyCreator._getRandomInt = jest
+        .fn((min, max) => 100)
+        .mockImplementationOnce((min, max) => 1)
+        .mockImplementationOnce((min, max) => 2)
+
+    expect(MyCreator.randBoardNumber()).toBe(1);
+    expect(MyCreator.randBoardNumber()).toBe(2);
+    expect(MyCreator.randBoardNumber()).not.toBe(2);
+    expect(MyCreator.randBoardNumber()).toBe(100);
 })
