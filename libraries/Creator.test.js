@@ -14,7 +14,7 @@ test('test create random board', () => {
     const MyCreator = new Creator();
     const MyTable = MyCreator.createBoard();
 
-	expect(MyTable.validate()).toBeTruthy();
+    expect(MyTable.validate()).toBeTruthy();
 })
 
 test('test create random board with mock', () => {
